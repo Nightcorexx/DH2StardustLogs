@@ -1,10 +1,14 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 public class Main {
 
     private static final int[] heat = new int[7];  //contains heat in following order: log, oakLog, willowLog, mapleLog, sdLog, strangeLog, ancientLog
+    private static final DecimalFormat df;
 
     static {
         heat[0] = 1;
@@ -14,6 +18,16 @@ public class Main {
         heat[4] = 20;
         heat[5] = 30;
         heat[6] = 50;
+
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.GERMANY);
+        dfs.setGroupingSeparator(',');
+        dfs.setDecimalSeparator('.');
+
+        df = new DecimalFormat();
+
+        df.setDecimalFormatSymbols(dfs);
+        df.setGroupingUsed(true);
+        df.setGroupingSize(3);
     }
 
     public static void main(String[] args) throws IOException {
@@ -27,7 +41,8 @@ public class Main {
                 "\nNote that you have to enter a value for the sdLog and at least one different type of wood\n" +
                 "log, oakLog, willowLog, mapleLog, sdLog, strangeLog, ancientLog, sd\n> ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        final String[] line = br.readLine().replaceAll("\\s", "").split(",");
+        final String[] line = br.readLine().replaceAll("\\s", "").replaceAll("\\.", "").
+                replaceAll("_", "").split(",");
         if(line.length != 8) throw new IllegalStateException("You either entered too many or too few inputs");
 
         for (int i = 0; i < 8; i++) {
@@ -121,14 +136,14 @@ public class Main {
         final long avgRev = amount * (averageSdLogPrice - sdLogPrice);
         final long maxRev = amount * (maxSdLogPrice - sdLogPrice);
         System.out.println("---------------------\n" +
-                "Best log in terms of heat per price and used for those calculations here are the " + bestLog + "\n" +
-                "The following is the theoeretical revenue in coins (in both heat and stardust) from burning your stardust logs per log:\n" +
-                "Minimum revenue from using your logs: " + minSdLogPrice + "$\n" +
-                "\tYour profit would be: " + minRev + "$\n" +
-                "Average revenue from using your logs: " + averageSdLogPrice + "$\n" +
-                "\tYour profit would be: " + avgRev + "$\n" +
-                "Maximum revenue from using your logs: " + maxSdLogPrice + "$\n" +
-                "\tYour profit would be: " + maxRev + "$");
+                "Best logs in terms of heat per price and used for those calculations here are the \"" + bestLog + "\"\n" +
+                "The following is the theoretical revenue in coins (in both heat and stardust) from burning per log:\n" +
+                "Minimum worth of one log: " + df.format(minSdLogPrice) + "$\n" +
+                "\tYour total profit would be: " + df.format(minRev) + "$\n" +
+                "Average worth of one log: " + df.format(averageSdLogPrice) + "$\n" +
+                "\tYour total profit would be: " + df.format(avgRev) + "$\n" +
+                "Maximum worth of one log: " + df.format(maxSdLogPrice) + "$\n" +
+                "\tYour total profit would be: " + df.format(maxRev) + "$");
 
         final double minSdForWorth = ((double) (sdLogPrice - sdLogHeatPrice) / sdPrice) + 1;
         final int gapFlat = 8_000;
@@ -142,7 +157,7 @@ public class Main {
         final long bestWin = amount * (long) maxSdLogPrice - safeSell;
 
         System.out.println("\nBurning all logs at once leaves you with a chance of " + riskP + "% to make profit and a risk of " + riskL + "% to loose money\n" +
-                "In worst case you loose " + worstLoss + "$ and in best case you gain " + bestWin + "$");
+                "In worst case you loose " + df.format(worstLoss) + "$ and in best case you gain " + df.format(bestWin) + "$");
 
         br.close();
     }
