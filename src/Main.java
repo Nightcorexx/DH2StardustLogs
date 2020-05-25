@@ -123,12 +123,12 @@ public class Main {
         System.out.println("---------------------\n" +
                 "Best log in terms of heat per price and used for those calculations here are the " + bestLog + "\n" +
                 "The following is the theoeretical revenue in coins (in both heat and stardust) from burning your stardust logs per log:\n" +
-                "Minimum revenue from using your logs: " + minSdLogPrice + "\n" +
-                "\tYour profit would be: " + minRev + "\n" +
-                "Average revenue from using your logs: " + averageSdLogPrice + "\n" +
-                "\tYour profit would be: " + avgRev + "\n" +
-                "Maximum revenue from using your logs: " + maxSdLogPrice + "\n" +
-                "\tYour profit would be: " + maxRev);
+                "Minimum revenue from using your logs: " + minSdLogPrice + "$\n" +
+                "\tYour profit would be: " + minRev + "$\n" +
+                "Average revenue from using your logs: " + averageSdLogPrice + "$\n" +
+                "\tYour profit would be: " + avgRev + "$\n" +
+                "Maximum revenue from using your logs: " + maxSdLogPrice + "$\n" +
+                "\tYour profit would be: " + maxRev + "$");
 
         final double minSdForWorth = ((double) (sdLogPrice - sdLogHeatPrice) / sdPrice) + 1;
         final int gapFlat = 8_000;

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DH2StardustLogs:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DH2StardustLogs_jar</output-path>
+    <root id="archive" name="DH2StardustLogs.jar">
+      <element id="module-output" name="DH2StardustLogs" />
+    </root>
+  </artifact>
+</component>
