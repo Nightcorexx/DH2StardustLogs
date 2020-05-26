@@ -19,4 +19,9 @@ In case you want to go back one hierarchy type "cd.."
 Once you reached the folder in which the name.jar file is in you enter this command:
   java -jar name.jar
   
+You can skip the navigating part but then your command needs to look like following:
+  java -jar D:\foo\boo\name.jar
+  
 And voilà. The "magic" starts.
+
+Please note that you need to have java 14 installed for this to work. I could compile it with an older version (smth like Java 8) but I just can't be bothered right now.
