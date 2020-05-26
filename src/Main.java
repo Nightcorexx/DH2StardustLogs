@@ -32,8 +32,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         final int[] prices = new int[8];  //contains in following order: log, oakLog, willowLog, mapleLog, sdLog, strangeLog, ancientLog, sd
-
-        final String SELL = "Sell the stardust logs", USE = "Use the stardust logs";
         final int minRevenue, averageRevenue, maxRevenue;
 
         System.out.print("Enter the prices of following products in accurate order separated by a comma (type \"0\" " +
