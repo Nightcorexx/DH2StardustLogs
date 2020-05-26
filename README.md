@@ -24,4 +24,4 @@ You can skip the navigating part but then your command needs to look like follow
   
 And voilà. The "magic" starts.
 
-Please note that you need to have java 14 installed for this to work. I could compile it with an older version (smth like Java 8) but I just can't be bothered right now.
+Please note that you need to have Java 8 or newer installed.
